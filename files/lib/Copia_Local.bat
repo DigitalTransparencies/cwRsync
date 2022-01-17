@@ -2,7 +2,7 @@ echo +------------------------------------------------------->> %ParLog%
 echo + COPIA LOCAL EN %origin%>> %ParLog%
 echo +------------------------------------------------------->> %ParLog%
 FOR /F "tokens=5" %%G IN ('rsync.exe --list-only %origin_local_copy_dir%/') DO SET loclastfile=%%G> nul
-"rsync.exe" -rtvH --delete --progress --exclude=%exclude% --log-file=%TmpLog% --link-dest="../%loclastfile%" "%origin_dir%" "%origin_local_copy_dir%/%origin%_%dtstamp%"
+"rsync.exe" -rtvHp --delete --progress --exclude=%exclude% --log-file=%TmpLog% --link-dest="../%loclastfile%" "%origin_dir%" "%origin_local_copy_dir%/%origin%_%dtstamp%"
 
 findstr /C:"rsync error:" %TmpLog% > nul
 IF %ERRORLEVEL% EQU 0 (

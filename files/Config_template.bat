@@ -2,8 +2,8 @@ rem @echo off
 SET origin=
 SET destination=
 
-SET origin_dir=/cygdrive/C/
-SET origin_local_copy_dir=/cygdrive/C/
-SET destination_address=username@domain::Folder
+SET origin_dir=/cygdrive/C/FolderToCopy
+SET origin_local_copy_dir=/cygdrive/C/CopyFolder
+SET destination_address=username@domain::Folder/%origin%
 
-SET exclude={"Ferro/TMP/*"}
+SET exclude={"DataToExclude/TMP/*"}

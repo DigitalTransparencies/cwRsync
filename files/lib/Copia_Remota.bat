@@ -2,7 +2,7 @@ echo +------------------------------------------------------->> %ParLog%
 echo + COPIA REMOTA A %destination%  			     >> %ParLog%
 echo +------------------------------------------------------->> %ParLog%
 FOR /F "tokens=5" %%G IN ('rsync.exe  --password-file=rsync_pass --list-only %destination_address%/') DO SET remlastfile1=%%G> nul
-"rsync.exe" -rtvHz --delete --progress --password-file=rsync_pass --exclude=%exclude% --log-file=%TmpLog% --password-file="rsync_pass" --chmod="777" "%origin_dir%" "rsync://rsync@temco.dynns.com:/Copias/rsync/Strawberry/%dtstamp%"
+"rsync.exe" -rtvHz --delete --progress --password-file=rsync_pass --exclude=%exclude% --log-file=%TmpLog% --password-file="rsync_pass" --link-dest="../%remlastfile1%" --chmod="777" "%origin_dir%" "%destination_address%/%dtstamp%"
 
 findstr /C:"rsync error:" %TmpLog% > nul
 IF %ERRORLEVEL% EQU 0 (
